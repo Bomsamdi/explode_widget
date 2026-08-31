@@ -1,0 +1,28 @@
+name: explode_widget
+description: >-
+  Shatters any widget into thousands of fragments of its own pixels on tap. One
+  render object, one drawAtlas call, and nothing rebuilds mid-flight.
+version: 0.1.1
+homepage: https://github.com/Bomsamdi/explode_widget
+repository: https://github.com/Bomsamdi/explode_widget
+issue_tracker: https://github.com/Bomsamdi/explode_widget/issues
+
+topics:
+  - animation
+  - particles
+  - widget
+  - render-object
+  - effects
+
+environment:
+  sdk: ^3.8.0
+  flutter: ">=3.32.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter

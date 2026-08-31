@@ -1,0 +1,20 @@
+# .pubignore replaces .gitignore for publishing.
+.dart_tool/
+build/
+/pubspec.lock
+.idea/
+*.iml
+.DS_Store
+
+# The example's platform runners are generated scaffolding; the archive only
+# needs its Dart.
+example/android/
+example/ios/
+example/web/
+example/.dart_tool/
+example/build/
+example/pubspec.lock
+
+# Release automation config; not part of the published package.
+release-please-config.json
+.release-please-manifest.json

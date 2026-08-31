@@ -1,0 +1,14 @@
+name: Publish
+
+# pub.dev only honours automated publishing when the run was triggered by a tag
+# push, so this cannot be folded into release-please.yml. The pattern takes
+# release tags only; a prerelease tag (v1.0.0-dev.1) is published by hand.
+on:
+    push:
+        tags: ["v[0-9]+.[0-9]+.[0-9]+"]
+
+jobs:
+    publish:
+        permissions:
+            id-token: write # authenticates to pub.dev over OIDC, no secret
+        uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1

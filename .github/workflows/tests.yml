@@ -1,0 +1,49 @@
+name: Tests
+
+on:
+    push:
+        branches: [main, master]
+    pull_request:
+
+jobs:
+    package:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: subosito/flutter-action@v2
+              with:
+                  channel: stable
+            - run: flutter pub get
+            - run: dart format --output=none --set-exit-if-changed .
+            - run: flutter analyze
+            - run: flutter test
+
+    example:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: example
+        steps:
+            - uses: actions/checkout@v4
+            - uses: subosito/flutter-action@v2
+              with:
+                  channel: stable
+            - run: flutter pub get
+            - run: flutter analyze
+            - run: flutter test
+
+    publishable:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: subosito/flutter-action@v2
+              with:
+                  channel: stable
+            - run: flutter pub get
+            # Recent Flutter rewrites analysis_options.yaml during `pub get`
+            # ("Upgrading analysis_options.yaml to exclude build and platform
+            # directories"), in both this package and the example. The publish
+            # check reads that as an unclean tree and fails, so the tree is put
+            # back before the dry run - the archive is unaffected either way.
+            - run: git checkout -- .
+            - run: flutter pub publish --dry-run
