@@ -1,3 +1,10 @@
+## 0.1.2
+
+* No functional change. The GitHub repository was deleted and recreated, which
+  gives it a new numeric id, and pub.dev pins that id in a publishing lock the
+  first time a package goes out from Actions. This release runs the automated
+  pipeline against the new repository to confirm it still authenticates.
+
 ## 0.1.1
 
 * Shortened the pubspec description to fit the 180 characters pub.dev indexes.
